@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Kata</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1><span class="small">Code exercise</span><br />Tic-Tac-Toe Kata</h1>
+    <div class="consigne">
+        <p>
+            The Goal of this Kata is to implement a working Tic-Tac-Toe game.
+        </p>
+
+        <p>
+            It can be a nice training on coding event-driven programs,
+            and more globally on how to decompose a complex problem into simpler ones.
+        </p>
+
+        <h2>Rules</h2>
+
+        <ul>
+            <p>The rules of the Tic-Tac-Toe game are the following:</p>
+
+            <li>a game is over when all cells are taken</li>
+            <li>a game is over when all cells in a column, a row or a diagonal are taken by a player</li>
+            <li>a player can take a cell if not already taken</li>
+            <li>players take turns taking cells until the game is over</li>
+            <li>there are two player in the game (X and O)</li>
+        </ul>
+
+        <p class="complement">
+            In the editor below, you can implement the game in JavaScript.<br/>
+        </p>
+        <p class="complement">
+            For simplicity, the HTML + CSS integration of the board is already done.<br />
+            Your goal is to focus on algorithmic logic.
+        </p>
+    </div>
+
+    <!-- ============================ -->
+
+    <div id="flems-editor">
+        <!-- The editor will be there -->
+    </div>
+
+    <!-- ============================ -->
+
+    <div class="consigne">
+        <p class="title-like">
+            To make it easier,<br/> we suggest you to decompose the work into two main step
+        </p>
+
+        
+        <h2>Step 1 - Just a board for human players</h2>
+        <p>
+            The game will have to allow two challengers to play together (on the same computer)
+            in the respect the rules listed above.
+        </p>
+        <p>
+            The game must prevent users from making illegal actions, like playing an already taken cell,
+            and must detect <em>game-ending</em> situations (a player has won, or all cells are taken)
+        </p>
+
+
+        <h2>Step 2 - Play against the machine</h2>
+        <p>
+            The second step would be to programmatically implement a computer player that one can
+            confront.
+        </p>
+        <p>
+            It does not necessarily have to be a <em>good</em> player, just following
+            the rules can be fine
+        </p>
+
+        <p class="source">
+            Set up by <a href="https://www.jimetevenard.com" target="_blank">Jim Etevenard</a>
+            -  <a href="https://github.com/jimetevenard/Tic-Tac-Toe-Kata">Source code</a>
+            
+            <br />
+            Inspired by <a href="https://codingdojo.org/" target="_blank">Coding Dojo</a>
+            - editor is powered by <a href="https://github.com/porsager/flems" target="_blank">Flems</a>
+        </p>
+    </div>
+
+
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+    <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
