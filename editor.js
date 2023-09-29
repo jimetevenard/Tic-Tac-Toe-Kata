@@ -16,7 +16,7 @@
             },
             {
                 name: '.css',
-                content: "body {\n  color: navy;\n  font-size: 1.2rem;\n  text-align: center;\n  \n  /* Yes, 'Comic Sans' rocks ! */\n  font-family: \"Comic Sans MS\", \"Comic Sans\", cursive;\n}\n\n#board {\n  margin: 3rem auto 1rem;\n  display: grid;\n  width: 9rem;\n  grid-template-columns: repeat(3, 1fr);\n  grid-template-rows: repeat(3, 1fr);\n  border: 2px solid;\n}\n#board .cell {\n  color: navy;\n  height: 3rem;\n  border: 2px solid;\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n\n#messages::before {\n  margin-top: 0.5rem;\n  font-size: 0.8em;\n  content: 'messages:';\n  border-bottom: 3px solid;\n  display: inline-block;\n}"
+                content: "body {\n  color: navy;\n  font-size: 1.2rem;\n  text-align: center;\n  \n  /* Yes, 'Comic Sans' rocks ! */\n  font-family: \"Comic Sans MS\", \"Comic Sans\", cursive;\n}\n\n#board {\n  margin: 3rem auto 1rem;\n  display: grid;\n  width: 9rem;\n  grid-template-columns: repeat(3, 1fr);\n  grid-template-rows: repeat(3, 1fr);\n  border: 2px solid;\n}\n#board .cell {\n  color: navy;\n  height: 3rem;\n  padding: 0;\n  border: 2px solid;\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n\n#messages::before {\n  margin-top: 0.5rem;\n  font-size: 0.8em;\n  content: 'messages:';\n  border-bottom: 3px solid;\n  display: inline-block;\n}"
             }
         ],
         links: [
