@@ -1,0 +1,167 @@
+files:
+    - name: .html
+      content: |
+        <div id="board">
+          <button class="cell" id="cell-1" />
+          <button class="cell" id="cell-2" />
+          <button class="cell" id="cell-3" />
+          
+          <button class="cell" id="cell-4" />
+          <button class="cell" id="cell-5" />
+          <button class="cell" id="cell-6" />
+          
+          <button class="cell" id="cell-7" />
+          <button class="cell" id="cell-8" />
+          <button class="cell" id="cell-9" />
+        </div>
+
+        <button id="reset-button">Reset</button>
+
+        <div id="messages"></div>
+    - name: ui.js
+      content: |
+        const ui = {
+          /**
+          * Mark a cell as played by player X or O.
+          */
+          markCell: function(number, player){
+            const n = Number(number);
+            if(n < 1 && n > 9) {
+              throw new Error('Invalid cell number !');
+            }
+            if(player !== 'X' && player !== 'O'){
+              throw new Error('Only X and O players allowed');
+            }
+
+            document.getElementById("cell-" + number).innerText = player;
+          },
+          
+          /**
+          * Clear the board and messages.
+          */
+          reset: function(){
+            ui._cells.forEach(cell => cell.innerText = '')
+            ui._messages.innerHTML = '';    
+          },
+          
+          /**
+          * Returns the player that marked the given cell,
+          * or null if the cell is free
+          */
+          getValueForCell: function(number) {
+            const player = document.getElementById("cell-" + number).innerText;
+            return player ? player : null; // Empty string is falsy
+          },
+          
+          /**
+          * Returns true if a cell is free (not played),
+          * false otherwise.
+          */
+          isFreeCell: function(number) {
+            return !ui.getValueForCell(number);
+          },
+          
+          /**
+          * Event handler : When a cell is clicked by a player, the
+          * callbabckFunction will be called with the cell number as argument.
+          */
+          onClickCell: function (callbackFunction) {
+            ui._cells.forEach(cell => {
+              cell.addEventListener('click', event => {
+                const cellNumber = Number(event.target.id.split('cell-')[1]);
+                callbackFunction(cellNumber);
+              });
+            });
+          },
+          
+          /**
+          * Prints a message under the game board.
+          */
+          message: function(text) {
+            const msg = document.createElement('p')
+            msg.innerText = text;
+            msg.className = 'message';
+            
+            const parent =  ui._messages || document.body;
+            parent.appendChild(msg);
+          },
+          
+          // Internals
+          _cells: document.querySelectorAll('.cell'),
+          _messages: document.getElementById('messages'),
+          _resetButton: document.getElementById('reset-button')
+        };
+
+        ui._resetButton.addEventListener('click', ui.reset);
+
+    - name: game.js
+      content: |
+        /*
+         * Given this game board, Let's implement a Tic-Tac-Toe !
+         * 
+         * +---+---+---+
+         * | 1 | 2 | 3 |
+         * +---+---+---+
+         * | 4 | 5 | 6 |
+         * +---+---+---+
+         * | 7 | 8 | 9 |
+         * +---+---+---+
+         * 
+         * NOTE : For simplicity, `ui.js` exposes some helper functions to
+         *        interract with the board and display messages.
+         */
+
+        // EXAMPLE: mark a cell
+        ui.markCell(1, 'X');
+        ui.markCell(5, 'O');
+
+        // EXAMPLE: Get the value of a cell
+        if(ui.isFreeCell(6)) {
+          ui.message("Hi ! Cell #6 is free !");
+        }
+        ui.message("Player " + ui.getValueForCell(1) + " has played on Cell #1 !");
+
+        // EXAMPLE: Handle the click on a cell
+        ui.onClickCell(function(cellNumber) {
+          ui.message("You clicked cell #" + cellNumber);
+        });
+
+    - name: .css
+      content: |
+        body {
+          color: navy;
+          font-size: 1.2rem;
+          text-align: center;
+          
+          /* Yes, 'Comic Sans' rocks ! */
+          font-family: "Comic Sans MS", "Comic Sans", cursive;
+        }
+
+        #board {
+          margin: 3rem auto 1rem;
+          display: grid;
+          width: 9rem;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          border: 2px solid;
+        }
+        #board .cell {
+          color: navy;
+          height: 3rem;
+          padding: 0;
+          border: 2px solid;
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+
+        #messages::before {
+          margin-top: 0.5rem;
+          font-size: 0.8em;
+          content: 'messages:';
+          border-bottom: 3px solid;
+          display: inline-block;
+        }
+links: []
+selected: game.js
+linkTabs: false
+middle: 70
